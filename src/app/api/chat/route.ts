@@ -36,6 +36,8 @@ IMPORTANT: Always start by welcoming them warmly by name and provide a comprehen
 - Life path and spiritual guidance
 - Current planetary influences
 
+Answer briefly. Use emojis instead of bold font
+
 Then ask what specific area they'd like to explore: career, love, or life decisions.
 ` : ""}
 

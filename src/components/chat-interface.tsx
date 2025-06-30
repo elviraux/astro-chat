@@ -106,6 +106,18 @@ export default function ChatInterface({ userData }: ChatInterfaceProps) {
     }
   }
 
+  function renderSimpleMarkdown(text: string) {
+    const parts = text.split(/(\*\*[^*]+\*\*)/g) // match **bold**
+    return parts.map((part, i) =>
+      part.startsWith("**") && part.endsWith("**") ? (
+        <strong key={i}>{part.slice(2, -2)}</strong>
+      ) : (
+        part
+      )
+    )
+  }
+  
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 p-4">
       <div className="max-w-4xl mx-auto">
@@ -156,7 +168,7 @@ export default function ChatInterface({ userData }: ChatInterfaceProps) {
                         <span className="text-sm font-medium text-purple-200">Margo</span>
                       </div>
                     )}
-                    <div className="whitespace-pre-wrap leading-relaxed text-sm md:text-base">{message.content}</div>
+                    <div className="whitespace-pre-wrap leading-relaxed text-sm md:text-base">{renderSimpleMarkdown(message.content)}</div>
                   </div>
                 </div>
               ))}
@@ -219,7 +231,7 @@ export default function ChatInterface({ userData }: ChatInterfaceProps) {
                   className="bg-white/10 border-white/30 text-white hover:bg-white/20 text-xs"
                   disabled={isLoading}
                 >
-                  💼 Career
+                  💼 Tell me about my career path and professional strengths
                 </Button>
                 <Button
                   variant="outline"
@@ -228,7 +240,7 @@ export default function ChatInterface({ userData }: ChatInterfaceProps) {
                   className="bg-white/10 border-white/30 text-white hover:bg-white/20 text-xs"
                   disabled={isLoading}
                 >
-                  💕 Love
+                  💕 What do the stars say about my love life and relationships?
                 </Button>
                 <Button
                   variant="outline"
@@ -237,7 +249,7 @@ export default function ChatInterface({ userData }: ChatInterfaceProps) {
                   className="bg-white/10 border-white/30 text-white hover:bg-white/20 text-xs"
                   disabled={isLoading}
                 >
-                  🔮 Decisions
+                  🔮 Provide Guidance
                 </Button>
               </div>
             </div>
